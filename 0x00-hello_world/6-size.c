@@ -2,7 +2,7 @@
 /**
  * main - this describe the main function of the code
  * Return: 0
- * */
+ */
 int main(void)
 {
 	char a;
