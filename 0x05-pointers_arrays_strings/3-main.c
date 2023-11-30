@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * main - check the code
@@ -8,9 +7,9 @@
  */
 int main(void)
 {
-    int n;
+    char *str;
 
-    n = _strlen_recursion("Corbin Coleman");
-    printf("%d\n", n);
+    str = "I do not fear computers. I fear the lack of them - Isaac Asimov";
+    _puts(str);
     return (0);
 }

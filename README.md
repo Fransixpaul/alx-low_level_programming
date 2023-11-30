@@ -1,1 +1,1 @@
-my hello world c program
+This is the README of this dirrectory
