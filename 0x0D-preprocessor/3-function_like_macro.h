@@ -1,8 +1,8 @@
-#ifndef MACROTEST_H
-#define MACROTEST_H
+#ifndef MACROLIKE_H
+#define MACROLIKE_H
 /**
  *
- * file: 3-function_like_macro
+ * File: 3-function_like_macro
  *
  * @x: input value (an int)
  *
