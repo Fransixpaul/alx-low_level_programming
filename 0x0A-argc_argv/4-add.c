@@ -3,7 +3,7 @@
 #include <ctype.h>
 /**
  * main - Sums possitve numbers
- * @argc: argument count 
+ * @argc: argument count
  * @argv: argument vector
  * Return: (0) as successful
  */
