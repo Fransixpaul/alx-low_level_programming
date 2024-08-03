@@ -1,49 +1,79 @@
+#include <stdio.h>
+#include <stdarg.h>
 #include "variadic_functions.h"
 /**
- * print_all - print any argument provided
- * @format: argument specifier
- *
- * Return: any argument given based on specified format
+ * print_char - Prints a char
+ * @args: The argument list
+ */
+void print_char(va_list args)
+{
+	printf("%c", va_arg(args, int));
+}
+/**
+ * print_int - Prints an integer
+ * @args: The argument list
+ */
+void print_int(va_list args)
+{
+	printf("%d", va_arg(args, int));
+}
+/**
+ * print_float - Prints a float
+ * @args: The argument list
+ */
+void print_float(va_list args)
+{
+	printf("%f", va_arg(args, double));
+}
+/**
+ * print_string - Prints a string
+ * @args: The argument list
+ */
+void print_string(va_list args)
+{
+	char *s = va_arg(args, char *);
+
+	if (s)
+		printf("%s", s);
+	else
+		printf("(nil)");
+}
+/**
+ * print_all - Prints anything based on the format string
+ * @format: A string of characters representing the argument types
  */
 void print_all(const char * const format, ...)
 {
-	int i, check_stat; /* declare variables and va_arg datatype */
-	char *str;
-	va_list spc;
+	va_list args;
+	unsigned int i = 0;
+	char *separator = "";
+	void (*print_funcs[])(va_list) = {
+		print_char,
+		print_int,
+		print_float,
+		print_string
+	};
+	char formats[] = { 'c', 'i', 'f', 's' };
 
-	va_start(spc, format); /* initilaize var arguments */
-	i = 0;
-	while (format != NULL && format[i] != '\0')
+	va_start(args, format);
+	while (format && format[i])
+
 	{
-		switch (format[i])
+		int j = 0;
+
+		while (j < 4)
 		{
-			case 'i':
-				printf("%d", va_arg(spc, int));
-				check_stat = 0; /* check if condition has been met */
+			if (format[i] == formats[j])
+			{
+				printf("%s", separator);
+				print_funcs[j](args);
+				separator = ", ";
 				break;
-			case 'f':
-				printf("%f", va_arg(spc, double));
-				check_stat = 0;
-				break;
-			case 'c':
-				printf("%c", va_arg(spc, int));
-				check_stat = 0;
-				break;
-			case 's':
-				str = va_arg(spc, char *);
-				if (str == NULL)
-					str = "(nil)";
-				printf("%s", str);
-				check_stat = 0;
-				break;
-			default:
-				check_stat = 1;
-				break;
+			}
+			j++;
 		}
-		if (format[i +  1] != '\0' && check_stat == 0) /* if NOT NULL */
-			printf(", ");
-		i++; /* update step of iter var */
+		i++;
 	}
+	va_end(args);
 	printf("\n");
-	va_end(spc); /* end traversal */
 }
