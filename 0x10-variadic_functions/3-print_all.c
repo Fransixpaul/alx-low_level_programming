@@ -33,10 +33,12 @@ void print_string(va_list args)
 {
 	char *s = va_arg(args, char *);
 
-	if (s)
-		printf("%s", s);
-	else
+	if (s  == NULL)
+	{
 		printf("(nil)");
+		return;
+	}
+		printf("%s", s);
 }
 /**
  * print_all - Prints anything based on the format string
