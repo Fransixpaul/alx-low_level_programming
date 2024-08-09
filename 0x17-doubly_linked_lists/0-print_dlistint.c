@@ -5,7 +5,7 @@ include <stdio.h>
 /**
  * print_dlistint - print all element of dlistinr_t list
  *
- * @h: pointer to the head of tthe list
+ * @h: pointer to the head of the list
  *
  * Return: the number of nodes
  */
